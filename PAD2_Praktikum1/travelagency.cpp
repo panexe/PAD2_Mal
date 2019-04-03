@@ -11,6 +11,12 @@ TravelAgency::TravelAgency()
 }
 
 std::vector<std::string> splitString(std::string in, char seperator){
+    // Splits a string into substring devided by a sperator
+    // input : string:in (the string that gets split)
+    // input : char:seperator (the char that seperates the substrings)
+    // return : vector<string> (the segments)
+
+
     std::vector<unsigned int> sep_positions;
     std::vector<std::string> ret;
 
@@ -41,6 +47,9 @@ std::vector<std::string> splitString(std::string in, char seperator){
 
 void TravelAgency::readFile()
 {
+    // reads the data from a text file then splits the string
+    // into the argument und puts the into the belonging vector
+
     std::string filePath = "./bookings.txt";
     std::string line;
     std::ifstream inFile;
@@ -71,15 +80,6 @@ void TravelAgency::readFile()
         lines.push_back(line);
     }
     inFile.close();
-
-
-
-    /*
-    for (unsigned int i = 0; i < lines.size(); i++){
-        std::cout << lines[i];
-    }
-    */
-
 
     std::vector<std::vector<std::string>> lines_split;
 
@@ -164,6 +164,8 @@ void TravelAgency::readFile()
 }
 
 struct inputData{
+    // Struct for saving the Data that is read from the binary file
+    // isnt necesarry, wouldb be more efficient to add them to the vectors right away
 
     long id;
     double price;
@@ -179,7 +181,25 @@ struct inputData{
     inputData(long _id, double _price, std::string _airport1,std::string _airport2,std::string _business, std::string _business2,std::string _city,char _booking,std::string _date,std::string _date2)
     : id(_id),price(_price), airport1(_airport1),airport2(_airport2), business(_business), business2(_business2),booking(_booking), city(_city),date(_date),date2(_date2)
     {
+        business = removeSpaces(business);
+        business2 = removeSpaces(business2);
+        city = removeSpaces(city);
 
+
+    }
+
+
+    std::string removeSpaces(std::string in){
+        // removes spaces at the end of a string
+
+        unsigned int index = in.size() > 0 ? in.size() -1: 0;
+
+        while(in[index] == ' '){
+            in.pop_back();
+            index--;
+        }
+
+        return in;
     }
 
 };
@@ -264,8 +284,11 @@ void TravelAgency::readBinaryFile()
 
     }else{
         std::cout << "Cant Open File \n";
+        return;
     }
 
+
+    // Put the data from the file into the vectors
 
     for(unsigned int i = 0; i < data.size(); i++){
         // FLIGHT
@@ -290,6 +313,9 @@ void TravelAgency::readBinaryFile()
         }
 
     }
+
+    // ------------------------ OUTPUT ----------------------------------------
+
     unsigned int highest = 0;
 
     // Get the index of the most expenive flight
@@ -303,6 +329,9 @@ void TravelAgency::readBinaryFile()
     std::cout << " von " << flightBookings[highest]->getFromDest() << " nach " << flightBookings[highest]->getToDest() << " mit " << flightBookings[highest]->getAirline() << " zum Preis von ";
     std::cout << flightBookings[highest]->getPrice() << std::endl;
 
+
+
+
     highest = 0;
 
     // Get the index of the most expenive hotel
@@ -314,6 +343,8 @@ void TravelAgency::readBinaryFile()
 
     std::cout << "Das Teuerste Hotel (ID:" << hotelBookings[highest]->getId() << ") vom " << hotelBookings[highest]->getFromDate() << " bis zum " << hotelBookings[highest]->getToDate();
     std::cout << " im " << hotelBookings[highest]->getHotel() << " in " << hotelBookings[highest]->getTown() << " zum Preis von " << hotelBookings[highest]->getPrice() << std::endl;
+
+
 
 
     highest = 0;
