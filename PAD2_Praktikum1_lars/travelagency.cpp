@@ -286,6 +286,9 @@ void TravelAgency::readBinaryFile()
         std::cout << "Cant Open File \n";
         return;
     }
+    int numF{0}, numC{0}, numH{0};
+    double sumF{0},sumC{0}, sumH{0};
+
 
 
     // Put the data from the file into the vectors
@@ -294,20 +297,23 @@ void TravelAgency::readBinaryFile()
         // FLIGHT
         if(data[i].booking == 'F'){
             this->flightBookings.push_back(new FlightBooking(data[i].id,data[i].price,data[i].date,data[i].date2,data[i].airport1,data[i].airport2,data[i].business));
-
+            numF++;
+            sumF += data[i].price;
 
         }else{
             // HOTEL
             if(data[i].booking == 'H'){
 
                 this->hotelBookings.push_back(new HotelBooking(data[i].id,data[i].price,data[i].date,data[i].date2,data[i].business,data[i].city));
-
+                numH++;
+                sumH += data[i].price;
 
             }else{
                 // CAR RESERVATION
                 if(data[i].booking == 'R'){
                     this->rentalCarReservations.push_back(new RentalCarReservation(data[i].id,data[i].price,data[i].date,data[i].date2,data[i].business,data[i].business2,data[i].city));
-
+                    numC++;
+                    sumC += data[i].price;
                 }
             }
         }
@@ -315,6 +321,15 @@ void TravelAgency::readBinaryFile()
     }
 
     // ------------------------ OUTPUT ----------------------------------------
+
+
+    std::cout << "Es wurden " << numF << " Fluege im Wert von " << sumF << " Euro eingelesen \n";
+    std::cout << "Es wurden " << numH << " Hotels im Wert von " << sumH << " Euro eingelesen \n";
+    std::cout << "Es wurden " << numC << " Autos im Wert von " << sumC << " Euro eingelesen \n\n";
+
+
+
+
 
     unsigned int highest = 0;
 
