@@ -21,6 +21,7 @@ public:
     void setId(long value);
     long getCustomerId() const;
     void setCustomerId(long value);
+    long getTravelBookingsSize();
 };
 
 #endif // TRAVEL_H
