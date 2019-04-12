@@ -13,6 +13,7 @@ protected:
     std::string toDate;
 public:
     Booking(long _id = 0, double _price = 0,long _travelID = 0, std::string _fromDate = "", std::string _toDate = "");
+    virtual ~Booking() = default;
     long getId() const;
     void setId(long value);
     double getPrice() const;

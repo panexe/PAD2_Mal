@@ -6,6 +6,20 @@
 #include "hotelbooking.h"
 #include "rentalcarreservation.h"
 
+int TravelAgency::getHighestId()
+{
+    // return the id with the highest numeric values in allBookings
+    int ret = 0;
+
+    for (Booking *b : this->allBookings){
+        if (b->getId() > ret){
+            ret = b->getId();
+        }
+    }
+
+    return ret;
+}
+
 TravelAgency::TravelAgency()
 {
 
@@ -315,4 +329,75 @@ Customer *TravelAgency::findCustomer(long id)
         }
     }
     return nullptr;
+}
+
+
+
+int TravelAgency::createBooking(char type, double price, std::string start, std::string end, long travelID, std::vector<std::string> bookingDetails)
+{
+    if (findTravel(travelID) == nullptr){
+        return -1;
+    }
+
+    long newId = this->getHighestId() +1;
+
+    if (type == 'F'){
+        allBookings.push_back(new FlightBooking(newId,price,travelID,start,end,bookingDetails[0],bookingDetails[1],bookingDetails[2]));
+        this->findTravel(travelID)->addBooking(allBookings[allBookings.size()-1]);
+
+    }else {
+        if(type == 'H'){
+            allBookings.push_back(new HotelBooking(newId,price,travelID,start,end,bookingDetails[0],bookingDetails[1]));
+            this->findTravel(travelID)->addBooking(allBookings[allBookings.size()-1]);
+
+        }else{
+            if (type == 'R'){
+                allBookings.push_back(new RentalCarReservation(newId,price,travelID,start,end,bookingDetails[0],bookingDetails[1],bookingDetails[2]));
+                this->findTravel(travelID)->addBooking(allBookings[allBookings.size()-1]);
+
+            }
+        }
+    }
+
+    return newId;
+
+}
+
+void TravelAgency::printNumerals()
+{
+    // prints the sum of each objekt type in all bookings and the sum of all prices
+
+    int numF{0},numH{0}, numR{0};
+    double price{0};
+
+    for (Booking *b : allBookings){
+        // Flight
+        if(FlightBooking *f = dynamic_cast<FlightBooking*>(b)) {
+
+            numF++;
+            price += f->getPrice();
+        }else{
+            // Hotel
+            if(HotelBooking *h = dynamic_cast<HotelBooking*>(b)) {
+               // old was safely casted to NewType
+                numH++;
+                price += h->getPrice();
+
+            }else{
+                // car
+                if(RentalCarReservation *r = dynamic_cast<RentalCarReservation*>(b)) {
+                   // old was safely casted to NewType
+                    numR++;
+                    price += r->getPrice();
+
+                }
+            }
+        }
+    }
+
+    // OUTPUT
+
+    std::cout << "Es wurden " << numF << " Fluege, " << numH << " Hotels, und " << numR << " Autos im Wert von " << price << " Euro gebucht \n";
+
+
 }
