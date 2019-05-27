@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1036</width>
+    <height>930</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1021</width>
+      <height>871</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetMaximumSize</enum>
+     </property>
+     <item row="4" column="2">
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_detail1">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_detail2">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_detail4">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_detail3">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="line_detail4"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="line_detail1">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="line_detail3"/>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="line_detail2"/>
+       </item>
+      </layout>
+     </item>
+     <item row="4" column="3">
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="1">
+        <widget class="QSpinBox" name="spinbox_reise">
+         <property name="maximum">
+          <number>100000</number>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_kunde">
+         <property name="text">
+          <string>Kunde</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QDoubleSpinBox" name="spinbox_preis">
+         <property name="maximum">
+          <double>100000000.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="line_kunde"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_reise">
+         <property name="text">
+          <string>Reise</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_preis">
+         <property name="text">
+          <string>Preis</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="0" column="3">
+      <widget class="QCalendarWidget" name="calendarWidget_to"/>
+     </item>
+     <item row="2" column="2">
+      <widget class="QLabel" name="Label_const">
+       <property name="text">
+        <string>Flugdetails</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QCalendarWidget" name="calendarWidget_from"/>
+     </item>
+     <item row="0" column="2" rowspan="2">
+      <widget class="QTableView" name="tableView"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1036</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFunktionen">
+    <property name="title">
+     <string>Funktionen</string>
+    </property>
+    <addaction name="actionDatei_einlesen"/>
+    <addaction name="actionBuchung_anlegen"/>
+    <addaction name="actionRefresh"/>
+    <addaction name="actionTextdatei_Erstellen"/>
+   </widget>
+   <addaction name="menuFunktionen"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionDatei_einlesen">
+   <property name="text">
+    <string>Datei einlesen</string>
+   </property>
+  </action>
+  <action name="actionBuchung_anlegen">
+   <property name="text">
+    <string>Buchung anlegen</string>
+   </property>
+  </action>
+  <action name="actionRefresh">
+   <property name="text">
+    <string>Refresh</string>
+   </property>
+  </action>
+  <action name="actionTextdatei_Erstellen">
+   <property name="text">
+    <string>Textdatei Erstellen</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

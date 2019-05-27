@@ -1,0 +1,16 @@
+release/booking.o
+release/customer.o
+release/flightbooking.o
+release/hotelbooking.o
+release/main.o
+release/mainwindow.o
+release/newbookingdialog.o
+release/rentalcarreservation.o
+release/tablemodel.o
+release/test.o
+release/travel.o
+release/travelagency.o
+release/moc_mainwindow.o
+release/moc_newbookingdialog.o
+release/moc_tablemodel.o
+release/moc_test.o
