@@ -1,0 +1,16 @@
+debug/booking.o
+debug/customer.o
+debug/flightbooking.o
+debug/hotelbooking.o
+debug/main.o
+debug/mainwindow.o
+debug/newbookingdialog.o
+debug/rentalcarreservation.o
+debug/tablemodel.o
+debug/test.o
+debug/travel.o
+debug/travelagency.o
+debug/moc_mainwindow.o
+debug/moc_newbookingdialog.o
+debug/moc_tablemodel.o
+debug/moc_test.o
